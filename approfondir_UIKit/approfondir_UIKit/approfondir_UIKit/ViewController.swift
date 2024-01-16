@@ -8,6 +8,12 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    // CG => Core Graphics
+    // CGFloate => Decimal
+    // CGSize => Taille avec largeur et hauteur
+    // CGPoint => Point precis X et Y
+    // CGRect => Cadre avec taille et position
 
     required init?(coder: NSCoder) {
         super.init(coder: coder)
@@ -22,6 +28,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         print("View didLoad")
+        self.view.isUserInteractionEnabled = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -42,6 +49,13 @@ class ViewController: UIViewController {
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         print("View did disapear")
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?)
+    {
+        guard let t = touches.first else { return }
+        let position = t.location(in: self.view)
+        print("Le CGPoint touche est : \(position)\n. Son X: est de \(position.x) et son Y: est de \(position.y)")
     }
 
 
