@@ -25,8 +25,27 @@ class SecondController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        createView()
+        //createView()
+        createViewWithConstraints()
         listerLesViews()
+    }
+    
+    func createViewWithConstraints() {
+        v = UIView()
+        self.view.addSubview(v)
+        let safe = view.safeAreaLayoutGuide
+        v.backgroundColor = .systemMint
+        v.translatesAutoresizingMaskIntoConstraints = false
+        v.topAnchor.constraint(equalTo: safe.topAnchor, constant:
+                                20).isActive = true
+        v.leftAnchor.constraint(equalTo: view.leftAnchor, constant:
+                                60).isActive = true
+        v.rightAnchor.constraint(equalTo: view.rightAnchor, constant:
+                                -45).isActive = true
+        v.heightAnchor.constraint(equalToConstant: 128).isActive = true
+        // v.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant:
+                               // -128).isActive = true
+        
     }
     
     func createView() {
