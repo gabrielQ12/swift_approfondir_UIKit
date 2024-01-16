@@ -66,9 +66,22 @@ class SecondController: UIViewController {
         third.backgroundColor = .white
         redView.addSubview(third)
         self.view.addSubview(v)
+        frameVsBounds()
+        UIView.animate(withDuration: 1) {
+            self.v.transform = CGAffineTransform(rotationAngle: 32)
+        } completion: { success in
+            self.frameVsBounds()
+        }
     }
     
-      @objc func arrangeSub() {
+    func frameVsBounds() {
+        // par rtapport a sa super
+        print("Frame: \(v.frame)")
+        // par rapport a lui meme
+        print("Bound \(v.bounds)")
+    }
+    
+    @objc func arrangeSub() {
           // En avant
           //self.view.bringSubviewToFront(v)
           // En arriere
