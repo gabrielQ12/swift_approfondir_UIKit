@@ -51,7 +51,16 @@
                         <viewLayoutGuide key="safeArea" id="zsY-p9-FDl"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" id="2Uo-84-uzw"/>
+                    <navigationItem key="navigationItem" id="2Uo-84-uzw">
+                        <barButtonItem key="rightBarButtonItem" title="supp" id="Twn-nd-CYS">
+                            <connections>
+                                <action selector="btnPressed:" destination="3Ei-VR-azp" id="aA2-Hs-5jD"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="suppBtn" destination="Twn-nd-CYS" id="jab-23-4QL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lJd-f5-XuM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

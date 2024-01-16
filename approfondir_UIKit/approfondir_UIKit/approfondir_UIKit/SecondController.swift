@@ -9,6 +9,15 @@ import UIKit
 
 class SecondController: UIViewController {
     
+    
+    @IBOutlet weak var suppBtn: UIBarButtonItem!
+    
+    // Avancer une vue
+    
+    // Reculer une vue
+    
+    var v: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         print("Second view")
@@ -17,11 +26,12 @@ class SecondController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         createView()
+        listerLesViews()
     }
     
     func createView() {
         //X
-        let x: CGFloat = 69
+        let x: CGFloat = 0
         //Y
         let y: CGFloat = 134
         //Width
@@ -35,19 +45,59 @@ class SecondController: UIViewController {
         let rect = CGRect(origin: point, size: size)
         
         // let rect: CGRect = CGRect (x: x, y: y, width: width, height: heigth)
-        let v: UIView = UIView(frame: rect)
-        v.backgroundColor = .systemPink
-        self.view.addSubview(v)
+        v = UIView(frame: rect)
+        v.backgroundColor = .systemMint
+        v.isUserInteractionEnabled = true
+        v.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(arrangeSub)))
+        
         
         let frame = self.view.frame
         let redView = UIView(
             frame: CGRect(
             x: 20,
-            y: frame.height / 2 - (frame.height / 10),
+            y: 0,
             width: frame.width - 40,
-            height: frame.height / 10)
+            height: frame.height )
         )
         redView.backgroundColor = .red
         self.view.addSubview(redView)
+        
+        let third = UIView(frame: CGRect(x: 10, y: 10, width:64, height: 64))
+        third.backgroundColor = .white
+        redView.addSubview(third)
+        self.view.addSubview(v)
+    }
+    
+      @objc func arrangeSub() {
+          // En avant
+          //self.view.bringSubviewToFront(v)
+          // En arriere
+          //self.view.sendSubviewToBack(v)
+          
+          // Voir la premiere Sub view
+          for index in 0..<self.view.subviews.count {
+              let newView = self.view.subviews[index]
+              print("Index : \(index) ==> \(newView == v)")
+              if index == 0 {
+                  let isV = newView == v
+                  isV ? self.view.bringSubviewToFront(v)
+                  : self.view.sendSubviewToBack(v)
+              }
+          }
+        }
+    
+    func listerLesViews() {
+        for subView in self.view.subviews {
+            print(subView.frame)
+            if subView.subviews.count > 0 {
+                print("On a une autre vue a linterieur")
+            }
+        }
+    }
+    
+    @IBAction func btnPressed(_ sender: Any) {
+        for subView in self.view.subviews {
+            subView.removeFromSuperview()
+        }
     }
 }
