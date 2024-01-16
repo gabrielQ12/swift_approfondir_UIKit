@@ -9,6 +9,8 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    @IBOutlet weak var btn: UIButton!
+    
     // CG => Core Graphics
     // CGFloate => Decimal
     // CGSize => Taille avec largeur et hauteur
@@ -39,6 +41,13 @@ class ViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         print("View did appear")
+        let frame = self.view.frame
+        let size = frame.size
+        print(" La taille de la UIViewController est de : \(size)")
+        let btnFrame = btn.frame
+        print("Taille : \(btn.frame.size)")
+        print("Point: \(btn.frame.origin)")
+        print(btnFrame)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
