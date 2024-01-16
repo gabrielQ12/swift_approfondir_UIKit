@@ -36,7 +36,18 @@ class SecondController: UIViewController {
         
         // let rect: CGRect = CGRect (x: x, y: y, width: width, height: heigth)
         let v: UIView = UIView(frame: rect)
-        v.backgroundColor = .systemRed
+        v.backgroundColor = .systemPink
         self.view.addSubview(v)
+        
+        let frame = self.view.frame
+        let redView = UIView(
+            frame: CGRect(
+            x: 20,
+            y: frame.height / 2 - (frame.height / 10),
+            width: frame.width - 40,
+            height: frame.height / 10)
+        )
+        redView.backgroundColor = .red
+        self.view.addSubview(redView)
     }
 }
